@@ -1,10 +1,10 @@
 
 
 
-var builder=WebApplication.CreateBuilder(args);
-builder.configureservice();
+var builder= WebApplication.CreateBuilder(args);
+builder.ConfigureAppServices();
 var app=builder.Build();
-app.configurepipline();
+app.ConfigureAppPipline();
 app.Run();
 
 

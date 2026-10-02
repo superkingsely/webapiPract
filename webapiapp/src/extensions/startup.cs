@@ -1,21 +1,30 @@
 
 
-
 public static class Startup
 {
-    public static WebApplicationBuilder configureservice(this WebApplicationBuilder builder)
+    public static WebApplicationBuilder ConfigureAppServices(this WebApplicationBuilder builder)
     {
-        builder.configureuiservice();
-        builder.configureappserviceservice();
-        builder.Appdbconfig();
+        builder.AppUi()
+                .Validatejwtservice(builder.Configuration);
+        builder.Services.Identitydependency();
+        builder.Services.DbcontextDependency(builder.Configuration);
+        builder.Services.AddScoped<RegisterHandler>();
+        builder.Services.AddScoped<LoginHandlerservice>();
+        builder.Services.AddScoped<UserHandler>();
+        builder.Services.AddScoped<Generatejwt>();
 
         return builder;
     }
-    public static WebApplication configurepipline(this WebApplication app)
-    {
-        app.configureuipipline();
-        app.configureappservicepipline();
 
+    public static WebApplication ConfigureAppPipline(this WebApplication app)
+    {
+        app.AppUiPipline();
+        app.Validatejwtpipline();
+        app.MapTestapi();
+        app.MapRegisterUsers()
+            .MapLoginEndpoint()
+            .Mapuserendpoint();
+       
         return app;
     }
 }
