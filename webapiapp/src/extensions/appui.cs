@@ -1,6 +1,7 @@
 
 
 using Microsoft.OpenApi;
+using Scalar.AspNetCore;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 public static class Appui
@@ -46,6 +47,7 @@ public static class Appui
             app.MapOpenApi();
             app.UseSwagger();
             app.UseSwaggerUI(options=>options.SwaggerEndpoint("/swagger/v1/swagger.json","Test api"));
+            app.MapScalarApiReference();
             
         }
         return app;

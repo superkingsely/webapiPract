@@ -14,7 +14,7 @@ public static class UsersEndpoint
                 return Results.BadRequest(new{message="oh oh endpoint return error pls try again or call cj for help"});
             }
             return Results.Ok(res) ;
-        }).RequireAuthorization();
+        }).RequireAuthorization(policy=>policy.RequireRole("Admin"));
 
         endpoint.MapGet("api/user/delete", async ([FromServices] UserHandler userHandler,[FromQuery] string id ) =>
         {
